@@ -1,5 +1,8 @@
 # README
 
+This project is part of Odin Project : https://www.theodinproject.com/lessons/ruby-on-rails-private-events
+Only backend, no frontend here.
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
