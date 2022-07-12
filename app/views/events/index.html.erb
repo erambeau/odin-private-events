@@ -3,4 +3,14 @@
 <% @events.each do |e| %>
     <h2><%= e.location %><h2>
     <p><%= e.date_event %></p>
+    <% if user_signed_in? %>
+        <%= form_with(url: "/events_attendings", method: "post", data: { turbo: false} ) do |f| %>
+            <%= f.hidden_field :attended_event, :value => e.id %>
+            <%= f.hidden_field :attendee, :value => current_user.id %>
+            <%= f.submit "S'inscrire" %>
+        <% end %>
+    <% end %>
 <% end %>
+
+
+
