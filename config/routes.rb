@@ -6,12 +6,17 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   devise_scope :user do  
-    get '/users/sign_out' => 'devise/sessions#destroy'     
+    get '/users/sign_out' => 'devise/sessions#destroy' 
+    get "/users/sessions/:id/show", to: "users/sessions#show"
   end
 
   root "events#index"
 
   resources :events
+
+
+
+  #get "/users/sessions/:id/show", to: "users/sessions#show"
 
 
 end
