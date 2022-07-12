@@ -1,0 +1,13 @@
+<h1>Create an event</h1>
+
+<%= form_with model: @event do |f| %>
+    <%= f.label :location %>
+    <%= f.text_field :location %>
+    <%= f.label :date_event %>
+    <%= f.date_field :date_event %>
+    <!--
+    <%= f.label :creator_id %>
+    <%= f.number_field :creator_id %>
+    -->
+    <%= f.submit "Créer l'event !" %>
+<% end %>
