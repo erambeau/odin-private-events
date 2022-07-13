@@ -10,7 +10,16 @@ class EventsController < ApplicationController
 
     def show
         @event = Event.find(params[:id])
-        @users = User.all
+        @the_creator = User.find(@event.creator_id)
+
+        @all_attendees = @event.users.all
+
+        #@attendees_for_the_event = EventAttending.where(event_id: @event.id)
+        #@all_attendees = User.find_all( |u| u.user_id == @attendees_for_the_event.user_id)
+
+
+
+        
     end
 
 
