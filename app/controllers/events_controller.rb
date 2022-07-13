@@ -4,6 +4,7 @@ class EventsController < ApplicationController
 
     def index
         @events = Event.all
+        @attendances = EventAttending.all
         @event_attending = EventAttending.new
     end
 
