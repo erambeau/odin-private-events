@@ -2,7 +2,7 @@ class EventsAttendingsController < ApplicationController
 
     def create
         #@event_attending = EventAttending.build(event_attending_params)
-        @event_attending = EventAttending.build(event_attending_params)
+        @event_attending = EventAttending.new(event_attending_params)
 
         if @event_attending.save
             redirect_to root_path
