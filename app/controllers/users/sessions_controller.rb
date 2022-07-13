@@ -6,6 +6,8 @@ class Users::SessionsController < Devise::SessionsController
   def show
     @user = User.find(params[:id])
     @events = Event.where(creator_id: params[:id])
+
+    @attended_events = @user.attended_events.all
   end
 
   # GET /resource/sign_in

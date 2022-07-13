@@ -1,7 +1,14 @@
 <h1>Hello, <%= @user.email %> !</h1>
-<h2>Your events are :</h2>
+<h2>The events you created are :</h2>
 
 <% @events.each do |e| %>
-    <h2><%= e.location %><h2>
-    <p><%= e.date_event  %></p>
+    <h3><%= e.location %><h3>
+    <h4><%= e.date_event  %></h4>
+<% end %>
+
+<h2>The events you are attended are :</h2>
+
+<% @attended_events.each do |ea| %>
+    <h3><%= ea.location %><h3>
+    <h4><%= ea.date_event  %></h4>
 <% end %>
