@@ -1,0 +1,20 @@
+<h2><%= e.location %><h2>
+<h4><%= e.date_event %></h4>
+<% if user_signed_in? %>
+    <% if current_user.id == e.creator_id %>
+        <p>Vous êtes l'organisateur de cet évènement</p>
+    <% else %>
+        <% if @attendances.exists?(event_id: e.id, user_id: current_user.id) %>
+            <% @this_attendance = @attendances.where(event_id: e.id, user_id: current_user.id) %>
+            <p style="color: green">Vous êtes inscrit à cet évènement. </p>
+            <%= button_to "Se désinscrire", {:controller => :events_attendings, :action => 'destroy', :id => @this_attendance.ids[0]}, :method => :delete %>
+
+        <% else %>
+            <%= form_with(model: EventAttending.new, url: "/events_attendings", method: "post", data: { turbo: false} ) do |f| %>
+                <%= f.number_field :event_id, type: :hidden, value: e.id %>
+                <%= f.number_field :user_id, type: :hidden, value: current_user.id %>
+                <%= f.submit "S'inscrire" %>
+            <% end %>
+        <% end%>
+    <% end%>
+<% end %>
