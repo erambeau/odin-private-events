@@ -4,12 +4,14 @@ class EventsAttendingsController < ApplicationController
 
     def create
         @event_attending = EventAttending.new(event_attending_params)
-        #@event_attending = EventAttending.new(event_id: 1, user_id: 1)
+        #@event_attending = EventAttending.new(event_id: 2, user_id: 1)
 
         if @event_attending.save
             redirect_to root_path
         else
-            redirect_to root_path, status: :unprocessable_entity
+            #redirect_to root_path, status: :unprocessable_entity
+            flash[:alert] = @event_attending.errors.full_messages
+            redirect_to root_path
         end
     end
 
